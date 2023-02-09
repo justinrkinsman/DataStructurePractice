@@ -61,6 +61,24 @@ public class LinkedListPractice<E> /* implements List<E> */ {
         return tmp;
     }
 
+    public E removeLast() {
+        if (head == null) {
+            return null;
+        }
+        if (head.next == null) {
+            return removeFirst();
+        }
+        Node<E> current = head, previous = null;
+        while (current != tail) {
+            previous = current;
+            current = current.next;
+        }
+        previous.next = null;
+        tail = previous;
+        currentSize--;
+        return current.data;
+    }
+
 }
 
 // add tail pointer to addFirst()
