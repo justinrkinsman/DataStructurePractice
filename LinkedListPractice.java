@@ -44,7 +44,6 @@ public class LinkedListPractice<E> {
         currentSize = 0;
     }
 
-    // add tail to list if list is empty or if list only has one element
     public void addFirst(E obj) {
         Node<E> node = new Node<E>(obj);
         if (head == null) {
@@ -55,13 +54,13 @@ public class LinkedListPractice<E> {
         node.next = head;
         head = node;
         currentSize++;
+        return;
     }
 
     public void addLast(E obj) {
         Node<E> node = new Node<E>(obj);
         if (head == null) {
-            head = tail = node;
-            currentSize++;
+            addFirst(obj);
             return;
         }
         tail.next = node;
@@ -149,5 +148,3 @@ public class LinkedListPractice<E> {
     }
 
 }
-
-// add tail pointer to addFirst()
