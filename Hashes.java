@@ -35,9 +35,17 @@ public class Hashes<K, V> /* implements HashI<K, V> */ {
         int hashval = key.hashCode();
         hashval = hashval & 0x7FFFFFFF;
         hashval = hashval % tableSize;
-        // hashArray[hashval].add(hashElement); LinkedListPractice is missing an add()
-        // method
+        hashArray[hashval].addFirst(hashElement);
         numElements++;
+        return true;
+    }
+
+    public boolean remove(K key, V value) {
+        int hashval = key.hashCode();
+        hashval = hashval & 0x7FFFFFFF;
+        hashval = hashval % tableSize;
+        // hashArray[hashval].remove(hashElement);
+        numElements--;
         return true;
     }
 }
