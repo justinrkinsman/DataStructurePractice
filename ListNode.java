@@ -34,11 +34,12 @@ class Solution {
             current = current.next;
             length++;
         }
-        int midway = length;
-        for (int i = 0; i < midway; i++) {
-            previous = current;
-            current = current.next;
-        }
+        /*
+         * int midway = length;
+         * for (int i = 0; i < midway; i++) {
+         * 
+         * }
+         */
         return true;
     }
 }
