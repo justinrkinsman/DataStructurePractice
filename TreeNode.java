@@ -48,4 +48,27 @@ public class TreeNode<E> {
         return contains(obj, node.left);
     }
 
+    public TreeNode<E> leftRotate(TreeNode<E> node) {
+        TreeNode<E> tmp = node.right;
+        node.right = tmp.left;
+        tmp.left = node;
+        return tmp;
+    }
+
+    public TreeNode<E> rightRotate(TreeNode<E> node) {
+        TreeNode<E> tmp = node.left;
+        node.left = tmp.right;
+        tmp.right = node;
+        return tmp;
+    }
+
+    public TreeNode<E> rightLeftRotate(TreeNode<E> node) {
+        node.right = rightRotate(node.right);
+        return leftRotate(node);
+    }
+
+    public TreeNode<E> leftRightRotate(TreeNode<E> node) {
+        node.left = leftRotate(node.left);
+        return rightRotate(node);
+    }
 }
