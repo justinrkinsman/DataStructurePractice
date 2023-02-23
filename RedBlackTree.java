@@ -133,5 +133,26 @@ public class RedBlackTree<K, V> {
 
     public void leftRightRotate(Node<K, V> node) {
         leftRotate(node.left);
+        rightRotate(node);
+    }
+
+    // public void rightLeftRotate(Node<K,V> node) {}
+    public int height() {
+        if (root == null) {
+            return 0;
+        }
+        return height(root) - 1;
+    }
+
+    public int height(Node<K, V> node) {
+        if (node == null) {
+            return 0;
+        }
+        int leftHeight = height(node.left) + 1;
+        int rightHeight = height(node.right) + 1;
+        if (leftHeight > rightHeight) {
+            return leftHeight;
+        }
+        return rightHeight;
     }
 }
