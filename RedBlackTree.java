@@ -128,4 +128,10 @@ public class RedBlackTree<K, V> {
         node.isLeftChild = true;
         node.parent = temp;
     }
+
+    /* rewrite leftRotate for right rotation */
+
+    public void leftRightRotate(Node<K, V> node) {
+        leftRotate(node.left);
+    }
 }
