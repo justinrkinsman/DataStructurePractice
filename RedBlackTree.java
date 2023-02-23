@@ -102,4 +102,30 @@ public class RedBlackTree<K, V> {
             return;
         }
     }
+
+    public void leftRotate(Node<K, V> node) {
+        Node<K, V> temp = node.right;
+        node.right = temp.left;
+        if (node.right != null) {
+            node.right.parent = node;
+            node.right.isLeftChild = false;
+        }
+        if (node.parent == null) {
+            // we are the root node
+            root = temp;
+            temp.parent = null;
+        } else {
+            temp.parent = node.parent;
+            if (node.isLeftChild) {
+                temp.isLeftChild = true;
+                temp.parent.left = temp;
+            } else {
+                temp.isLeftChild = false;
+                temp.parent.right = temp;
+            }
+        }
+        temp.left = node;
+        node.isLeftChild = true;
+        node.parent = temp;
+    }
 }
