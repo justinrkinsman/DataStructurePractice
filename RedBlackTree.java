@@ -83,4 +83,23 @@ public class RedBlackTree<K, V> {
         node.parent.black = true;
         return;
     }
+
+    public void rotate(Node<K, V> node) {
+        if (node.isLeftChild) {
+            if (node.parent.isLeftChild) {
+                rightRotate(node.parent.parent);
+                node.black = false;
+                node.parent.black = true;
+                if (node.parent.right != null) {
+                    node.parent.right.black = false;
+                }
+                return;
+            }
+            rightLeftRotate(node.parent.parent);
+            node.black = true;
+            node.right.black = false;
+            node.left.black = false;
+            return;
+        }
+    }
 }
