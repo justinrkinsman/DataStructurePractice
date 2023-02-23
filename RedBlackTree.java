@@ -44,5 +44,43 @@ public class RedBlackTree<K, V> {
             newNode.isLeftChild = true;
         }
         add(parent.left, newNode);
+        checkColor(newNode);
+    }
+
+    public void checkColor(Node<K, V> node) {
+        if (node == root) {
+            return;
+        }
+        if (!node.black && !node.parent.black) {
+            correctTree(node);
+        }
+        checkColor((node.parent));
+    }
+
+    public void correctTree(Node<K, V> node) {
+        if (node.parent.isLeftChild) {
+            // aunt is node.parent.parent.right
+            if (node.parent.parent.right == null || node.parent.parent.right.black) {
+                rotate(node);
+                return;
+            }
+            if (node.parent.parent.right != null) {
+                node.parent.parent.right.black = true;
+            }
+            node.parent.parent.black = false;
+            node.parent.black = true;
+            return;
+        }
+        // aunt is grandparent.left
+        if (node.parent.parent.left == null || node.parent.parent.left.black) {
+            rotate(node);
+            return;
+        }
+        if (node.parent.parent.left != null) {
+            node.parent.parent.left.black = true;
+        }
+        node.parent.parent.black = false;
+        node.parent.black = true;
+        return;
     }
 }
