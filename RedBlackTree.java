@@ -155,4 +155,20 @@ public class RedBlackTree<K, V> {
         }
         return rightHeight;
     }
+
+    public int blackNodes(Node<K, V> node) {
+        if (node == null) {
+            return 1;
+        }
+        int rightBlackNodes = blackNodes(node.right);
+        int leftBlackNodes = blackNodes(node.left);
+        if (rightBlackNodes != leftBlackNodes) {
+            // throw an error or fix the tree
+
+        }
+        if (node.black) {
+            leftBlackNodes++;
+        }
+        return leftBlackNodes;
+    }
 }
